@@ -1,2 +1,49 @@
 # Bashtor
-Editor
+
+
+
+
+**Tags :**________________________________________________________________
+
+```<c>``` : Check prev command is successfully run or not. 
+
+```<k:all``` : Check all pods are running or not.
+
+```<k:p:pod_name``` : Check a particular pod is created and is in running phase.
+
+
+
+
+
+**Note :**________________________________________________________________
+
+1. Before using **<k:all , <k:p:pod_name** kube-config file must be present in local system .kube directory i.e. 
+2. Kubectl must be installed in remote machine so that it can give update when pods not ready.  
+3. ```<c>```  tag must also be included before ```<k:all , <k:p:pd_name```.
+
+
+
+
+
+**Shortcuts :**___________________________________________________________
+
+> EDITOR SHORTCUT
+
+Ctrl + b : Resize Editor to 20 %\
+Ctrl + n : Resize Editor to 50 %\
+Ctrl + m : Resize Editor to 70 %
+
+> BUTTON SHORTCUT
+
+Send cmd : Ctrl + j : Auto select the single command and send it to terminal.\
+Select cmd : Ctrl + g : Send selected command to terminal.\
+Start Script : Ctrl + w : Start script include ```<c>, <k:all, <k:p:pod_name```.\
+Stop Script : Ctrl + e : Stop the script from executing.\
+Open file : Ctrl + o : open the file.\
+Save file : Ctrl + s : save the file.
+
+> TERMINAL SHORTCUT
+
+Ctrl + L : Clear the terminal.\
+Ctrl + Insert : Copy from terminal.\
+Shift + Insert : Paste into terminal.
