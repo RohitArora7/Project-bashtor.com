@@ -1,0 +1,43 @@
+#---------------------------Install the required package
+sudo apt install g++ &&
+<c>
+g++ --version
+<c>
+
+
+#---------------------------Create a demo.c file
+sudo tee -a demo.cpp <<EOF
+#include<stdio.h>
+#include <iostream>
+
+using namespace std;
+
+int sumOfTwoNumbers(int a, int b)
+{
+    return (a + b);
+}
+
+int main()
+{
+
+        // Given two numbers
+        int a = 13, b = 22;
+
+        // Function declared in header
+        // file to find the sum
+        cout << "Sum is: "
+        << sumOfTwoNumbers(a, b)
+        << endl;
+}
+EOF
+<c>
+
+
+#---------------------------Compile demo.cpp
+g++ demo.cpp -o demo
+<c>
+
+
+#---------------------------Run demo program
+./demo
+<c>

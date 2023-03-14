@@ -1,0 +1,27 @@
+#---------------------------Install Docker.
+sudo apt-get update &&
+<c>
+sudo apt  install apt-transport-https ca-certificates curl gnupg-agent software-properties-common -y &&
+<c>
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/docker-archive-keyring.gpg
+<c>
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" &&
+<c>
+sudo apt-get update &&
+<c>
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y &&
+<c>
+sudo usermod -aG docker $USER
+<c>
+#---------------------------Enter Current User password.
+su - ${USER}
+<c>
+
+
+#---------------------------Uninstall Docker.
+sudo apt-get purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras -y &&
+<c>
+sudo rm -rf /var/lib/docker
+<c>
+sudo rm -rf /var/lib/containerd
+<c>

@@ -1,0 +1,28 @@
+#---------------------------Install the required package
+sudo apt-get install build-essential manpages-dev &&
+<c>
+gcc --version
+<c>
+
+
+#---------------------------Create a demo.c file
+sudo tee -a demo.c <<EOF
+#include<stdio.h>
+/* demo.c:  C program */
+int main(void)
+{
+ printf("Hello! This is a test program.\n");
+ return 0;
+}
+EOF
+<c>
+
+
+#---------------------------Compile demo.c
+cc demo.c -o demo
+<c>
+
+
+#---------------------------Run demo program
+./demo
+<c>

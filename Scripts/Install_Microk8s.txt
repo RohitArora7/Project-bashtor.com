@@ -1,0 +1,66 @@
+vm=ubuntu@192.168.122.7
+<c>
+ssh $vm
+<c>
+sudo snap install microk8s --classic --channel=1.26/stable &&
+<c>
+
+
+#---------------------------Join the group and providing full writes to folder.
+mkdir .kube
+<c>
+sudo usermod -a -G microk8s ubuntu
+<c>
+sudo chown -f -R ubuntu ~/.kube
+<c>
+exit
+<c>
+
+
+#---------------------------Create kubernetes config file.
+ssh $vm
+<c>
+cd .kube
+<c>
+microk8s config > config
+<c>
+chmod go-r ~/.kube/config
+<c>
+cd ..
+<c>
+
+
+#---------------------------Install Kubectl 
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" 
+<c>
+chmod +x kubectl   
+<c>
+sudo mv kubectl /usr/local/bin 
+<c> 
+
+
+#---------------------------Copy kube config to local
+exit
+<c>
+scp $vm:~/.kube/config ~/.kube/config
+<c>
+
+
+#---------------------------Check kubernetes pods in running condition
+ssh $vm
+<c>
+<k:all
+<c>
+
+
+
+#---------------------------Enable More Features
+microk8s enable dns dashboard hostpath-storage
+<c>
+<k:p:metrics-server
+<c>
+<k:all
+<c>
+ls
+<c>
+
