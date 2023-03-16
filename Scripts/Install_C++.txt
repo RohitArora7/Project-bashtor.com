@@ -3,8 +3,6 @@ sudo apt install g++ &&
 <c>
 g++ --version
 <c>
-
-
 #---------------------------Create a demo.c file
 sudo tee -a demo.cpp <<EOF
 #include<stdio.h>
@@ -31,13 +29,9 @@ int main()
 }
 EOF
 <c>
-
-
 #---------------------------Compile demo.cpp
 g++ demo.cpp -o demo
 <c>
-
-
 #---------------------------Run demo program
 ./demo
 <c>

@@ -3,8 +3,6 @@ sudo apt-get install build-essential manpages-dev &&
 <c>
 gcc --version
 <c>
-
-
 #---------------------------Create a demo.c file
 sudo tee -a demo.c <<EOF
 #include<stdio.h>
@@ -16,13 +14,9 @@ int main(void)
 }
 EOF
 <c>
-
-
 #---------------------------Compile demo.c
 cc demo.c -o demo
 <c>
-
-
 #---------------------------Run demo program
 ./demo
 <c>
