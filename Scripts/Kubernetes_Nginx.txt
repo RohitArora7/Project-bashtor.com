@@ -1,0 +1,105 @@
+#-----------------------Method 1 
+
+kubectl create deployment nginx --image=nginx:alpine
+<c>
+<k:p:nginx
+<c>
+kubectl create service nodeport nginx --node-port 30080 --tcp=80:80
+<c>
+
+##Select the command then press Ctrl + L 
+google-chrome 'VM-Ip:30080'
+
+
+#-----------------------Method 2 
+
+sudo tee -a pod.yml <<EOF
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx:alpine
+EOF
+<c>
+kubectl create -f pod.yml
+<c>
+<k:all
+<c>
+
+sudo tee -a service.yml <<EOF
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  labels:
+    name: nginx
+spec:
+  type: NodePort
+  ports:
+    - port: 80
+      nodePort: 30080
+      name: http
+    - port: 443
+      nodePort: 30443
+      name: https
+  selector:
+    name: nginx
+EOF
+<c>
+kubectl create -f service.yml
+<c>
+
+##Select the command then press Ctrl + L 
+google-chrome 'VM_Ip:30080'
+
+
+
+
+
+#-----------------------Method 3
+
+kubectl run nginx --image nginx:alpine
+<c>
+<k:p:nginx
+<c>
+kubectl expose pod nginx --port 80 --type=NodePort
+<c>
+
+##Get the port
+kubectl get svc 
+
+##Select the command then press Ctrl + L 
+google-chrome : "VM-IP:PORT"
+
+
+
+
+#--------------------------Get Details 
+
+kubectl get pods -A
+<c>
+kubectl get deployments
+<c>
+kubectl get svc 
+<c>
+kubectl describe svc nginx
+
+
+#--------------------------Edit Service
+
+kubectl edit svc nginx
+
+
+#--------------------------Delete Pods, Deployment, Services
+
+kubectl delete deployment nginx
+<c>
+kubectl delete pod nginx
+<c>
+kubectl delete svc nginx
+<c>

@@ -20,6 +20,7 @@
 1. Before using **<k:all , <k:p:pod_name** kube-config file must be present in local system .kube directory i.e. 
 2. Kubectl must be installed in remote machine so that it can give update when pods not ready.  
 3. ```<c>```  tag must also be included before ```<k:all , <k:p:pd_name```.
+4. Install Curl before running bastor
 
 
 
@@ -41,6 +42,7 @@ Start Script : Ctrl + w : Start script include ```<c>, <k:all, <k:p:pod_name```.
 Stop Script : Ctrl + e : Stop the script from executing.\
 Open file : Ctrl + o : open the file.\
 Save file : Ctrl + s : save the file.
+Select cmd and run in background : Ctrl + l : Incase you wanna run command in local machine rather than in VM
 
 > TERMINAL SHORTCUT
 
