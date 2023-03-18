@@ -13,7 +13,8 @@
 
 ```&&``` : This must be used at end of commands where ```<c>``` fails 
 
-Example:
+Example:\
+
 sudo apt install vim -y && \
 ```<c>```
 
