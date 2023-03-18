@@ -15,8 +15,7 @@
 
 Example:
 sudo apt install vim -y && \
-
-<c>
+```<c>```
 
 
 
