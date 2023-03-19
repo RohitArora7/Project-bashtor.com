@@ -1,0 +1,64 @@
+mkdir bashtor_flask
+<c>
+cd bashtor_flask
+<c>
+#---------------------------Create Dockerfile
+<c>
+sudo tee -a Dockerfile <<EOF
+
+FROM python:3.8
+ 
+WORKDIR /app
+COPY . /app
+ 
+RUN pip install -r requirements.txt
+ 
+ENTRYPOINT ["python"]
+CMD ["app.py"]
+EOF
+<c>
+#---------------------------Create app.py
+<c>
+sudo tee -a app.py <<EOF 
+
+from flask import Flask # importing the flask class
+app = Flask(__name__) # creating an instance of the Flask class
+ 
+@app.route('/') # The primary url for our application
+def hello_world(): # This method returns 'Flask Dockerized', which is displayed in our browser.
+    return 'Flask Dockerized'
+ 
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0')
+    
+EOF
+<c>
+sudo tee -a requirements.txt <<EOF 
+  Flask==2.0.1
+EOF
+<c>
+#---------------------------Create Build Image
+<c>
+docker build -t flaskdock_image .
+<c>
+#---------------------------Create Container
+<c>
+docker run --name flaskdock_container -p 5000:5000 flaskdock_image
+<c>
+
+
+##Select the command then press Ctrl + L 
+google-chrome 'VM-Ip:5000/'
+<c>
+
+
+
+
+docker rm flaskdock_container
+<c>
+docker rmi flaskdock_image
+<c>
+
+
+
+

@@ -1,0 +1,115 @@
+#---------------------------INSTALL KUBERNETES
+vm=ubuntu@192.168.122.7
+<c>
+ssh $vm
+<c>
+sudo snap install microk8s --classic --channel=1.26/stable &&
+<c>
+#---------------------------Join the group and providing full writes to folder.
+mkdir .kube
+<c>
+sudo usermod -a -G microk8s ubuntu
+<c>
+sudo chown -f -R ubuntu ~/.kube
+<c>
+exit
+<c>
+#---------------------------Create kubernetes config file.
+ssh $vm
+<c>
+cd .kube
+<c>
+microk8s config > config
+<c>
+chmod go-r ~/.kube/config
+<c>
+cd ..
+<c>
+#---------------------------Install Kubectl 
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" 
+<c>
+chmod +x kubectl   
+<c>
+sudo mv kubectl /usr/local/bin 
+<c> 
+#---------------------------Copy kube config to local
+exit
+<c>
+scp $vm:~/.kube/config ~/.kube/config
+<c>
+#---------------------------Check kubernetes pods in running condition
+ssh $vm
+<c>
+<k:all
+<c>
+#---------------------------Enable More Features
+microk8s enable dns dashboard hostpath-storage
+<c>
+<k:p:metrics-server
+<c>
+<k:all
+<c>
+ls
+<c>
+
+#---------------------------INSTALL HELM
+wget https://get.helm.sh/helm-v3.7.0-linux-amd64.tar.gz
+<c>
+tar -xf helm-v3.7.0-linux-amd64.tar.gz
+<c>
+cd linux-amd64/
+<c>
+sudo mv helm /usr/local/bin/ 
+<c>
+chmod +x /usr/local/bin/helm
+<c>
+helm repo add stable https://charts.helm.sh/stable/ 
+<c>
+cd ..
+<c>
+
+
+#---------------------------INSTALL EMCO
+<c>
+git clone https://git.onap.org/multicloud/k8s
+<c>
+#---------------------------Create onap4k8s namespace.
+<c>
+kubectl create namespace onap4k8s
+<c>
+kubectl config set-context $(kubectl config current-context) --namespace=onap4k8s
+<c>
+#---------------------------EMCO modules deployment.
+<c>
+cd ~/k8s/deployments/kubernetes
+<c>
+#---------------------------Open the onap4k8s.yaml and replace the image path 'emcov2/emco:stable' with 'amcop/emco:stable' for all the five modules.
+<c>
+sed -i 's/emcov2/amcop/g' onap4k8s.yaml
+<c>
+kubectl apply -f onap4k8sdb.yaml -n onap4k8s
+<c>
+<k:p:mongo
+<c>
+kubectl apply -f onap4k8s.yaml -n onap4k8s
+<c>
+<k:all
+<c>
+#---------------------------EMCOUI deployment.
+<c>
+cd ~/k8s/src/tools/emcoui/helm/emcoui
+<c>
+sed -i 's/master/v2.1.0/g' values.yaml
+<c>
+cd ..
+<c>
+helm install emcoui emcoui --namespace onap4k8s
+<c>
+<k:all
+<c>
+
+##Select the command then press Ctrl + L 
+google-chrome 'http://VM-Ip:30480/app/admin/projects'
+
+
+
