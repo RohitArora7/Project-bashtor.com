@@ -58,9 +58,6 @@ kubectl create -f service.yml
 google-chrome 'VM_Ip:30080'
 
 
-
-
-
 #-----------------------Method 3
 
 kubectl run nginx --image nginx:alpine
@@ -75,8 +72,6 @@ kubectl get svc
 
 ##Select the command then press Ctrl + L 
 google-chrome : "VM-IP:PORT"
-
-
 
 
 #--------------------------Get Details 
