@@ -1,0 +1,30 @@
+
+#BookMarks
+google-chrome 'localhost:8080'
+google-chrome '127.0.0.1:7000'
+google-chrome 'google.com'
+google-chrome 'http://192.168.5.171:5000/api/'
+
+#Path Explorer
+cd /home/${USER}/Documents/Python
+cd /home/${USER}/Documents/Java
+
+#Folder Explorer
+nautilus /home/${USER}/exp/
+nautilus /home/${USER}/test
+
+#VS Code Explorer
+code /home/${USER}/exp/
+code /home/${USER}/test
+
+#SSH Explorer
+ssh ubuntu@192.168.4.121
+ssh ubuntu@192.168.5.70
+
+
+
+
+
+
+
+
