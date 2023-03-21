@@ -31,12 +31,12 @@ chmod +x kubectl
 <c>
 sudo mv kubectl /usr/local/bin 
 <c> 
-#---------------------------Copy kube config to local
+#---------------------------Exit the VM and Copy kube config to local
 exit
 <c>
 scp $vm:~/.kube/config ~/.kube/config
 <c>
-#---------------------------Check kubernetes pods in running condition
+#---------------------------SSH VM and Check kubernetes pods in running condition
 ssh $vm
 <c>
 <k:all
