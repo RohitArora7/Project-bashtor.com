@@ -15,7 +15,7 @@ google-chrome 'VM-Ip:30080'
 
 mkdir bashtor_nginx
 <c>
-cd mkdir bashtor_nginx
+cd bashtor_nginx
 <c>
 sudo tee -a pod.yml <<EOF
 apiVersion: v1
