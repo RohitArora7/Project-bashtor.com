@@ -1,3 +1,7 @@
+mkdir bashtor_c++
+<c>
+cd bashtor_c++
+<c>
 #---------------------------Install the required package
 sudo apt install g++ &&
 <c>

@@ -70,6 +70,9 @@ cd ..
 
 
 #---------------------------INSTALL EMCO
+mkdir bashtor_emco
+<c>
+cd bashtor_emco
 <c>
 git clone https://git.onap.org/multicloud/k8s
 <c>
