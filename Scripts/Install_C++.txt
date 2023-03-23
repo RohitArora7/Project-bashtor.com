@@ -3,7 +3,7 @@ mkdir bashtor_c++
 cd bashtor_c++
 <c>
 #---------------------------Install the required package
-sudo apt install g++ &&
+sudo apt install g++ -y &&
 <c>
 g++ --version
 <c>

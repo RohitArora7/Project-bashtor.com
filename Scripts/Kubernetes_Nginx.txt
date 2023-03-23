@@ -13,6 +13,10 @@ google-chrome 'VM-Ip:30080'
 
 #-----------------------Method 2 
 
+mkdir bashtor_nginx
+<c>
+cd mkdir bashtor_nginx
+<c>
 sudo tee -a pod.yml <<EOF
 apiVersion: v1
 kind: Pod
@@ -52,6 +56,8 @@ spec:
 EOF
 <c>
 kubectl create -f service.yml
+<c>
+kubectl get svc
 <c>
 
 ##Select the command then press Ctrl + L 
