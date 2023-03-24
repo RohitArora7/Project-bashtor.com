@@ -14,7 +14,7 @@
 ```&&``` : This must be used at end of commands where ```<c>``` fails to check.
 
 Example:\
-sudo apt install vim -y && \
+sudo apt install vim -y ```&&``` \
 ```<c>```
 
 
