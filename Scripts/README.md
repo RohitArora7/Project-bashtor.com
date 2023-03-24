@@ -6,7 +6,7 @@
 
 ```<k:p:pod_name``` : Check a particular pod is created and is in running phase.
 
-```&&``` : This must be used at end of commands where ```<c>``` fails 
+```&&``` : This must be used at end of commands where ```<c>``` fails to check.
 
 Example:\
 sudo apt install vim -y ```&&``` \
