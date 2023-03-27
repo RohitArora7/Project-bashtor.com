@@ -55,3 +55,8 @@ Select cmd and run in background : Ctrl + l : Incase you wanna run command in lo
 Ctrl + L : Clear the terminal.\
 Ctrl + Insert : Copy from terminal.\
 Shift + Insert : Paste into terminal.
+
+
+**How it's work :**________________________________
+
+https://www.youtube.com/watch?v=cPrxVsA1Iak
