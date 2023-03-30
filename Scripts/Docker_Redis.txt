@@ -1,0 +1,76 @@
+mkdir bashtor_redis
+<c>
+cd bashtor_redis
+<c>
+mkdir -p data/redis-1-data
+<c>
+#---------------------------Create Dockerfile
+<c>
+sudo tee -a docker-compose.yml <<EOF
+version: '3.7'
+
+services:
+
+  redis:
+    image: "redis:alpine"
+    command: redis-server --requirepass redisadmin
+    expose:
+     - "6379"
+    volumes:
+      - $PWD/data/redis-1-data:/data
+    environment:
+      - REDIS_REPLICATION_MODE=master
+ 
+EOF
+<c>
+docker-compose up -d
+<c>
+
+
+#---------------------------Select, Insert, Delete data inside Redis
+
+docker exec -it bashtor_redis_redis_1 redis-cli --pass redisadmin
+
+KEYS *
+
+SET FIRST-NAME HARRY
+SET LAST-NAME POTTER
+
+GET FIRST-NAME
+GET LAST-NAME
+
+DEL FIRST-NAME
+DEL LAST-NAME
+
+
+#---------------------------Backup storage location at local
+
+ls $PWD/data/redis-1-data
+
+
+
+#---------------------------Backup Redis 
+
+docker exec -it bashtor_redis_redis_1 sh
+
+redis-cli --pass redisadmin
+
+SAVE
+
+
+#---------------------------Get details of Container and Image
+
+docker ps
+docker ps -a
+docker images
+<c>
+
+
+#---------------------------Delete Container and Image
+
+docker stop bashtor_redis_redis_1
+<c>
+docker rm bashtor_redis_redis_1
+<c>
+docker rmi redis:alpine
+<c>
